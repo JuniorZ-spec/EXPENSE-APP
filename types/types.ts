@@ -1,3 +1,4 @@
+import { Document, Types } from "mongoose";
 
 export enum ExpenseCategory {
     Food = "Food",
@@ -8,20 +9,16 @@ export enum ExpenseCategory {
     Other = "Other"
 }
 
-export interface Expense {
-    id: number;
-    userid: number;
-    description: string;
-    amount: number;
-    date: string; // ISO format date string
-    category: ExpenseCategory;
-}
-
-
-
-export interface User {
-    id: number;
+export interface IUser extends Document {
     username: string;
     email: string;
-    password: string; // In a real application, passwords should be hashed
+    password: string;
+}
+
+export interface IExpense extends Document {
+    title: string;
+    amount: number;
+    date: Date;
+    category: ExpenseCategory;
+    userId: Types.ObjectId;
 }
