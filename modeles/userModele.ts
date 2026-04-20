@@ -1,10 +1,10 @@
-import mongoose from "mongoose";
-import { IUser } from "../types/types";
+import mongoose, { Schema } from 'mongoose';
+import { IUser } from '../types/types';
 
-const userSchema = new mongoose.Schema<IUser>({
-    username: { type: String, required: true, unique: true },
+const UserSchema: Schema = new Schema({
+    username: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
 });
 
-export const User = mongoose.model<IUser>("User", userSchema);
+export const User = mongoose.model<IUser>('User', UserSchema);
